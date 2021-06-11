@@ -1,0 +1,22 @@
+{
+    "name": "@ryangjchandler/alpine-tooltip",
+    "description": "Add tooltips to your Alpine 3.x components with a custom directive.",
+    "version": "0.1.0",
+    "author": {
+        "name": "Ryan Chandler",
+        "email": "support@ryangjchandler.co.uk",
+        "url": "https://ryangjchandler.co.uk"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ryangjchandler/alpine-tooltip"
+    },
+    "main": "dist/alpine-tooltip.cjs.js",
+    "module": "dist/alpine-tooltip.esm.js",
+    "scripts": {
+        "build": "node ./scripts/build.js",
+        "watch": "node ./scripts/build.js --watch",
+        "lint": "eslint .",
+        "lint-fix": "eslint . --fix"
+    }
+}
