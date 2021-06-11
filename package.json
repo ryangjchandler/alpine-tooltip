@@ -22,7 +22,8 @@
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^4.3.1",
         "eslint-plugin-standard": "^4.1.0",
-        "lint-staged": "^10.5.4"
+        "lint-staged": "^10.5.4",
+        "tippy.js": "^6.3.1"
     },
     "scripts": {
         "build": "node ./scripts/build.js",
