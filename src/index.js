@@ -7,8 +7,6 @@ export default function (Alpine) {
             ? buildConfigFromModifiers(modifiers)
             : {}
 
-        console.log(config)
-
         effect(() => {
             getContent(content => {
                 if (! el.__x_tippy) {

@@ -3349,7 +3349,6 @@ function src_default(Alpine) {
   Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect}) => {
     const getContent = evaluateLater(expression);
     const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
-    console.log(config);
     effect(() => {
       getContent((content) => {
         if (!el.__x_tippy) {
