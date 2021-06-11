@@ -5,7 +5,7 @@
 Add tooltips to your Alpine 3.x components with a custom directive.
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/ryangjchandler/alpine-tooltip?label=version&style=flat-square)
-![Build size Brotli](https://img.badgesize.io/ryangjchandler/alpine-clipboard/main/dist/cdn.js.svg?compression=gzip&style=flat-square&color=green)
+![Build size Brotli](https://img.badgesize.io/ryangjchandler/alpine-tooltip/main/dist/cdn.js.svg?compression=gzip&style=flat-square&color=green)
 [![Monthly downloads via CDN](https://data.jsdelivr.com/v1/package/npm/@ryangjchandler/alpine-tooltip/badge)](https://www.jsdelivr.com/package/npm/@ryangjchandler/alpine-tooltip)
 
 > This package only supports Alpine v3.x.
