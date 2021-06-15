@@ -11,8 +11,8 @@
         "type": "git",
         "url": "https://github.com/ryangjchandler/alpine-tooltip"
     },
-    "main": "dist/alpine-tooltip.cjs.js",
-    "module": "dist/alpine-tooltip.esm.js",
+    "main": "dist/module.cjs.js",
+    "module": "dist/module.esm.js",
     "devDependencies": {
         "brotli-size": "^4.0.0",
         "esbuild": "^0.8.39",
