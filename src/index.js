@@ -76,5 +76,9 @@ const buildConfigFromModifiers = modifiers => {
         config.theme = modifiers[modifiers.indexOf('theme') + 1]
     }
 
+    if (modifiers.includes('placement')) {
+        config.placement = modifiers[modifiers.indexOf('placement') + 1]
+    }
+
     return config
 }

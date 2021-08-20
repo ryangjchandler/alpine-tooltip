@@ -80,6 +80,7 @@ The `x-tooltip` directive is powered by [Tippy.js](https://atomiks.github.io/tip
 | `debounce`    | Change the time (ms) to debounce the interactive hide handler when the cursor leaves the tooltip.                                                                                                                                   | `x-tooltip.interactive.debounce.500`                                      |
 | `max-width`   | Change the `max-width` (px) of the tooltip.                                                                                                                                                                                         | `x-tooltip.max-width.500`                                                 |
 | `theme`       | Change the theme of the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/themes/).                                                                                                                                | `x-tooltip.theme.light`                                                   |
+| `placement`   | Change the placement / position of the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/all-props/#placement).                                                                                                    | `x-tooltip.placement.top`, `x-tooltip.placement.bottom-start`             |
 
 ## Versioning
 

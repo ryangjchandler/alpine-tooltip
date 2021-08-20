@@ -3413,6 +3413,9 @@ var buildConfigFromModifiers = (modifiers) => {
   if (modifiers.includes("theme")) {
     config.theme = modifiers[modifiers.indexOf("theme") + 1];
   }
+  if (modifiers.includes("placement")) {
+    config.placement = modifiers[modifiers.indexOf("placement") + 1];
+  }
   return config;
 };
 
