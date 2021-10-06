@@ -3344,21 +3344,10 @@ var require_tippy_cjs = __commonJS((exports) => {
 });
 
 // src/index.js
+var import_tippy2 = __toModule(require_tippy_cjs());
+
+// src/buildConfigFromModifiers.js
 var import_tippy = __toModule(require_tippy_cjs());
-function src_default(Alpine) {
-  Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect}) => {
-    const getContent = evaluateLater(expression);
-    const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
-    effect(() => {
-      getContent((content) => {
-        if (!el.__x_tippy) {
-          el.__x_tippy = (0, import_tippy.default)(el, config);
-        }
-        el.__x_tippy.setContent(content);
-      });
-    });
-  });
-}
 var buildConfigFromModifiers = (modifiers) => {
   const config = {
     plugins: []
@@ -3407,6 +3396,22 @@ var buildConfigFromModifiers = (modifiers) => {
   }
   return config;
 };
+
+// src/index.js
+function src_default(Alpine) {
+  Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect}) => {
+    const getContent = evaluateLater(expression);
+    const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
+    effect(() => {
+      getContent((content) => {
+        if (!el.__x_tippy) {
+          el.__x_tippy = (0, import_tippy2.default)(el, config);
+        }
+        el.__x_tippy.setContent(content);
+      });
+    });
+  });
+}
 
 // builds/module.js
 var module_default = src_default;

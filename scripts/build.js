@@ -1,9 +1,10 @@
-let fs = require('fs');
-let brotliSize = require('brotli-size');
+import fs from 'fs';
+import brotliSize from 'brotli-size'
+import esbuild from 'esbuild'
 
 (() => {
     if (! fs.existsSync(`./dist`)) {
-        fs.mkdirSync(`./dist`, 0744);
+        fs.mkdirSync(`./dist`, 0o744);
     }
 
     // Go through each file in the package's "build" directory
@@ -64,16 +65,16 @@ function build(options) {
     options.define || (options.define = {})
     options.define['process.env.NODE_ENV'] = process.argv.includes('--production') ? `'production'` : `'development'`
 
-    return require('esbuild').build({
+    return esbuild.build({
         watch: process.argv.includes('--watch'),
         ...options,
     }).catch(() => process.exit(1))
 }
 
-function outputSize(package, file) {
+function outputSize(pkg, file) {
     let size = bytesToSize(brotliSize.sync(fs.readFileSync(file)))
 
-    console.log("\x1b[32m", `${package}: ${size}`)
+    console.log("\x1b[32m", `${pkg}: ${size}`)
 }
 
 function bytesToSize(bytes) {
