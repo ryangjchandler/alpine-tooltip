@@ -2885,21 +2885,7 @@
   });
   var tippy_esm_default = tippy;
 
-  // src/index.js
-  function src_default(Alpine) {
-    Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect: effect5}) => {
-      const getContent = evaluateLater(expression);
-      const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
-      effect5(() => {
-        getContent((content) => {
-          if (!el.__x_tippy) {
-            el.__x_tippy = tippy_esm_default(el, config);
-          }
-          el.__x_tippy.setContent(content);
-        });
-      });
-    });
-  }
+  // src/buildConfigFromModifiers.js
   var buildConfigFromModifiers = (modifiers) => {
     const config = {
       plugins: []
@@ -2948,6 +2934,22 @@
     }
     return config;
   };
+
+  // src/index.js
+  function src_default(Alpine) {
+    Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect: effect5}) => {
+      const getContent = evaluateLater(expression);
+      const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
+      effect5(() => {
+        getContent((content) => {
+          if (!el.__x_tippy) {
+            el.__x_tippy = tippy_esm_default(el, config);
+          }
+          el.__x_tippy.setContent(content);
+        });
+      });
+    });
+  }
 
   // builds/cdn.js
   document.addEventListener("alpine:initializing", () => {
