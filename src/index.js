@@ -10,11 +10,13 @@ export default function (Alpine) {
 
         effect(() => {
             getContent(content => {
-                if (!el.__x_tippy) {
-                    el.__x_tippy = tippy(el, config)
-                }
+                if(content) {
+                    if (!el.__x_tippy) {
+                        el.__x_tippy = tippy(el, config)
+                    }
 
-                el.__x_tippy.setContent(content)
+                    el.__x_tippy.setContent(content)
+                }
             })
         })
     })
