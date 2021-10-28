@@ -14,7 +14,12 @@ export default function (Alpine) {
                     el.__x_tippy = tippy(el, config)
                 }
 
-                el.__x_tippy.setContent(content)
+                if (!content) {
+                    el.__x_tippy.disable()
+                } else {
+                    el.__x_tippy.enable()
+                    el.__x_tippy.setContent(content)
+                }
             })
         })
     })
