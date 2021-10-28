@@ -63,6 +63,10 @@ To create a tooltip, use the `x-tooltip` directive on an element.
 </div>
 ```
 
+### Disabling the tooltip
+
+If you wish to disable the tooltip you can set the data property to a falsy value, i.e. an empty string, `null`, `undefined` or `false`. If you wish to re-enable the tooltip, just update the data property to a truthy expression and the plugin will call the `enable()` method on the Tippy instance.
+
 ### Modifiers
 
 The `x-tooltip` directive is powered by [Tippy.js](https://atomiks.github.io/tippyjs/). Tippy has a lot of different configuration options, some of which can be controlled via modifiers on the `x-tooltip` directive.
