@@ -9,6 +9,10 @@ export const buildConfigFromModifiers = modifiers => {
         return modifiers[modifiers.indexOf(modifier) + 1]
     }
 
+    if (modifiers.includes('animation')) {
+        config.animation = getModifierArgument('animation')
+    }
+
     if (modifiers.includes('duration')) {
         config.duration = parseInt(getModifierArgument('duration'))
     }

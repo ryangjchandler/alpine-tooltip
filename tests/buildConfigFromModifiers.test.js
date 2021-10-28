@@ -1,6 +1,13 @@
 import { followCursor } from 'tippy.js'
 import { buildConfigFromModifiers } from '../src/buildConfigFromModifiers'
 
+test('animation', () => {
+    expect(buildConfigFromModifiers(['animation', 'shrink'])).toStrictEqual({
+        plugins: [],
+        animation: 'shrink',
+    })
+})
+
 test('duration', () => {
     expect(buildConfigFromModifiers(['duration', '500'])).toStrictEqual({
         plugins: [],
