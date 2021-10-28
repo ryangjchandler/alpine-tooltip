@@ -3356,7 +3356,8 @@ var buildConfigFromModifiers = (modifiers) => {
     config.duration = parseInt(modifiers[modifiers.indexOf("duration") + 1]);
   }
   if (modifiers.includes("delay")) {
-    config.delay = parseInt(modifiers[modifiers.indexOf("delay") + 1]);
+    const delay = modifiers[modifiers.indexOf("delay") + 1];
+    config.delay = delay.includes("-") ? delay.split("-").map((n) => parseInt(n)) : parseInt(delay);
   }
   if (modifiers.includes("cursor")) {
     config.plugins.push(import_tippy.followCursor);
