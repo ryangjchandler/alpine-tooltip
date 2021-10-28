@@ -15,6 +15,13 @@ test('delay', () => {
     })
 })
 
+test('delay - combined', () => {
+    expect(buildConfigFromModifiers(['delay', '500-0'])).toStrictEqual({
+        plugins: [],
+        delay: [500, 0],
+    })
+})
+
 test('cursor', () => {
     expect(buildConfigFromModifiers(['cursor'])).toStrictEqual({
         plugins: [followCursor],
