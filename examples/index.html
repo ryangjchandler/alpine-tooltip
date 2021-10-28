@@ -14,9 +14,11 @@
         </script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine-next/packages/alpinejs/dist/cdn.min.js" defer></script>
     </head>
-    <body>
-        <button x-data="{ content: 'Hello!' }" x-tooltip.on.click.delay.500.interactive.debounce.500.max-width.200="content">
+    <body x-data="{ content: 'Hello!' }">
+        <button x-tooltip.on.click="content">
             Hover over me!
         </button>
+
+        <input type="text" x-model="content">
     </body>
 </html>
