@@ -2899,7 +2899,7 @@
     }
     if (modifiers.includes("cursor")) {
       config.plugins.push(followCursor);
-      const next = modifiers[modifiers.indexOf("cursor") + 1] ?? null;
+      const next = modifiers[modifiers.indexOf("cursor") + 1];
       if (["x", "initial"].includes(next)) {
         config.followCursor = next === "x" ? "horizontal" : "initial";
       } else {

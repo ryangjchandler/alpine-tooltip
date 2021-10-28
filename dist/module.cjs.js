@@ -3359,7 +3359,6 @@ var import_tippy2 = __toModule(require_tippy_cjs());
 // src/buildConfigFromModifiers.js
 var import_tippy = __toModule(require_tippy_cjs());
 var buildConfigFromModifiers = (modifiers) => {
-  var _a;
   const config = {
     plugins: []
   };
@@ -3372,7 +3371,7 @@ var buildConfigFromModifiers = (modifiers) => {
   }
   if (modifiers.includes("cursor")) {
     config.plugins.push(import_tippy.followCursor);
-    const next = (_a = modifiers[modifiers.indexOf("cursor") + 1]) != null ? _a : null;
+    const next = modifiers[modifiers.indexOf("cursor") + 1];
     if (["x", "initial"].includes(next)) {
       config.followCursor = next === "x" ? "horizontal" : "initial";
     } else {
