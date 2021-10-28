@@ -1,7 +1,7 @@
 {
     "name": "@ryangjchandler/alpine-tooltip",
     "description": "Add tooltips to your Alpine 3.x components with a custom directive.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "author": {
         "name": "Ryan Chandler",
         "email": "support@ryangjchandler.co.uk",
