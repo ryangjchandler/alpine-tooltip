@@ -2,6 +2,24 @@ import tippy from 'tippy.js'
 import { buildConfigFromModifiers } from './buildConfigFromModifiers'
 
 export default function (Alpine) {
+    Alpine.magic('tooltip', (el) => {
+        return (content, config = {}) => {
+            const instance = tippy(el, {
+                content,
+                trigger: 'manual',
+                ...config
+            })
+
+            instance.show()
+
+            setTimeout(() => {
+                instance.hide()
+
+                setTimeout(() => instance.destroy(), config.duration || 300)
+            }, config.timeout || 2000)
+        }
+    })
+
     Alpine.directive('tooltip', (el, { modifiers, expression }, { evaluateLater, effect }) => {
         const getContent = evaluateLater(expression)
         const config = modifiers.length > 0

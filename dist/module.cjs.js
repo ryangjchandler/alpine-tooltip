@@ -3416,6 +3416,20 @@ var buildConfigFromModifiers = (modifiers) => {
 
 // src/index.js
 function src_default(Alpine) {
+  Alpine.magic("tooltip", (el) => {
+    return (content, config = {}) => {
+      const instance = (0, import_tippy2.default)(el, {
+        content,
+        trigger: "manual",
+        ...config
+      });
+      instance.show();
+      setTimeout(() => {
+        instance.hide();
+        setTimeout(() => instance.destroy(), config.duration || 300);
+      }, config.timeout || 2e3);
+    };
+  });
   Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect}) => {
     const getContent = evaluateLater(expression);
     const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};

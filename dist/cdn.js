@@ -2944,6 +2944,20 @@
 
   // src/index.js
   function src_default(Alpine) {
+    Alpine.magic("tooltip", (el) => {
+      return (content, config = {}) => {
+        const instance = tippy_esm_default(el, {
+          content,
+          trigger: "manual",
+          ...config
+        });
+        instance.show();
+        setTimeout(() => {
+          instance.hide();
+          setTimeout(() => instance.destroy(), config.duration || 300);
+        }, config.timeout || 2e3);
+      };
+    });
     Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect: effect5}) => {
       const getContent = evaluateLater(expression);
       const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
