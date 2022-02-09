@@ -87,6 +87,36 @@ The `x-tooltip` directive is powered by [Tippy.js](https://atomiks.github.io/tip
 | `placement`   | Change the placement / position of the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/all-props/#placement).                                                                                                    | `x-tooltip.placement.top`, `x-tooltip.placement.bottom-start`             |
 | `animation`   | Change the animation used for the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/animations/).                                                                                                                  | `x-tooltip.animation.scale`, `x-tooltip.animation.perspective`            |
 
+### `$tooltip`
+
+As well as the `x-tooltip` directive, this package also provides a `$tooltip` magic function that you can use to manually instantiate a tooltip.
+
+```html
+<button @click="$tooltip('Hello, world!')">
+```
+
+When you click on this button, the tooltip will show and be hidden 2 seconds later.
+
+#### Configuring the timeout
+
+If you would like the tooltip to show for longer than 2 seconds, you can provide an object as the second argument to the `$tooltip` magic function.
+
+```html
+<button @click="$tooltip('Hello, world!', { timeout: 5000 })">
+```
+
+The timeout should be in milliseconds (`seconds * 1000`). 
+
+#### Tippy configuration
+
+The second argument to `$tooltip` should be an object. This object accepts all Tippy.js configuration options, found in the [docs](https://atomiks.github.io/tippyjs/v6/all-props/). 
+
+The magic variable will automatically set the `content` property to the value of the first argument, as well as the `trigger` property (`manual`). You're free to specify any other properties supported by Tippy.
+
+```html
+<button @click="$tooltip('Hello, world!', { delay: 500 })">
+```
+
 ## Versioning
 
 This projects follow the [Semantic Versioning](https://semver.org/) guidelines.
