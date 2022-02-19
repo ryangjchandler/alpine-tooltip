@@ -63,6 +63,18 @@ To create a tooltip, use the `x-tooltip` directive on an element.
 </div>
 ```
 
+### Raw text
+
+If you don't want to bind your tooltip's content to a data property in your Alpine component, you can add the `.raw` modifier to the directive and set the content using the directive expression instead.
+
+```html
+<button x-tooltip.raw="Hello, world!">
+    Raw Tooltip
+</button>
+```
+
+The expression / text inside of the directive will be used as the tooltip and it will only be initialised and configured once.
+
 ### Disabling the tooltip
 
 If you wish to disable the tooltip you can set the data property to a falsy value, i.e. an empty string, `null`, `undefined` or `false`. If you wish to re-enable the tooltip, just update the data property to a truthy expression and the plugin will call the `enable()` method on the Tippy instance.
