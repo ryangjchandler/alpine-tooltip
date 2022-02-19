@@ -16,9 +16,13 @@
     </head>
     <body x-data="{ content: 'Hello!' }">
         <button x-tooltip.on.click="content">
-            Hover over me!
+            Click me!
         </button>
 
         <input type="text" x-model="content">
+
+        <button x-tooltip.raw="Hello, world!">
+            Raw tooltip
+        </button>
     </body>
 </html>

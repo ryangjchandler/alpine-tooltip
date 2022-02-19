@@ -21,24 +21,33 @@ export default function (Alpine) {
     })
 
     Alpine.directive('tooltip', (el, { modifiers, expression }, { evaluateLater, effect }) => {
-        const getContent = evaluateLater(expression)
         const config = modifiers.length > 0
             ? buildConfigFromModifiers(modifiers)
             : {}
 
-        effect(() => {
-            getContent(content => {
-                if (!el.__x_tippy) {
-                    el.__x_tippy = tippy(el, config)
-                }
+        if (!el.__x_tippy) {
+            el.__x_tippy = tippy(el, config)
+        }
 
-                if (!content) {
-                    el.__x_tippy.disable()
-                } else {
-                    el.__x_tippy.enable()
-                    el.__x_tippy.setContent(content)
-                }
+        const setupTooltip = (content) => {
+            if (!content) {
+                el.__x_tippy.disable()
+            } else {
+                el.__x_tippy.enable()
+                el.__x_tippy.setContent(content)
+            }
+        }
+
+        if (modifiers.includes('raw')) {
+            setupTooltip(expression)
+        } else {
+            const getContent = evaluateLater(expression)
+
+            effect(() => {
+                getContent(content => {
+                    setupTooltip(content)
+                })
             })
-        })
+        }
     })
 }

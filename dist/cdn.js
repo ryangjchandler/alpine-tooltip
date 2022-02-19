@@ -2959,21 +2959,28 @@
       };
     });
     Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect: effect5}) => {
-      const getContent = evaluateLater(expression);
       const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
-      effect5(() => {
-        getContent((content) => {
-          if (!el.__x_tippy) {
-            el.__x_tippy = tippy_esm_default(el, config);
-          }
-          if (!content) {
-            el.__x_tippy.disable();
-          } else {
-            el.__x_tippy.enable();
-            el.__x_tippy.setContent(content);
-          }
+      if (!el.__x_tippy) {
+        el.__x_tippy = tippy_esm_default(el, config);
+      }
+      const setupTooltip = (content) => {
+        if (!content) {
+          el.__x_tippy.disable();
+        } else {
+          el.__x_tippy.enable();
+          el.__x_tippy.setContent(content);
+        }
+      };
+      if (modifiers.includes("raw")) {
+        setupTooltip(expression);
+      } else {
+        const getContent = evaluateLater(expression);
+        effect5(() => {
+          getContent((content) => {
+            setupTooltip(content);
+          });
         });
-      });
+      }
     });
   }
 
