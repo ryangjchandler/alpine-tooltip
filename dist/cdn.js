@@ -2963,11 +2963,13 @@
       if (!el.__x_tippy) {
         el.__x_tippy = tippy_esm_default(el, config);
       }
+      const enableTooltip = () => el.__x_tippy.enable();
+      const disableTooltip = () => el.__x_tippy.disable();
       const setupTooltip = (content) => {
         if (!content) {
-          el.__x_tippy.disable();
+          disableTooltip();
         } else {
-          el.__x_tippy.enable();
+          enableTooltip();
           el.__x_tippy.setContent(content);
         }
       };
@@ -2977,7 +2979,12 @@
         const getContent = evaluateLater(expression);
         effect5(() => {
           getContent((content) => {
-            setupTooltip(content);
+            if (typeof content === "object") {
+              el.__x_tippy.setProps(content);
+              enableTooltip();
+            } else {
+              setupTooltip(content);
+            }
           });
         });
       }
