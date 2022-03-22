@@ -29,11 +29,15 @@ export default function (Alpine) {
             el.__x_tippy = tippy(el, config)
         }
 
+        const enableTooltip = () => el.__x_tippy.enable();
+        const disableTooltip = () => el.__x_tippy.disable();
+
         const setupTooltip = (content) => {
             if (!content) {
-                el.__x_tippy.disable()
+                disableTooltip()
             } else {
-                el.__x_tippy.enable()
+                enableTooltip()
+
                 el.__x_tippy.setContent(content)
             }
         }
@@ -45,7 +49,12 @@ export default function (Alpine) {
 
             effect(() => {
                 getContent(content => {
-                    setupTooltip(content)
+                    if (typeof content === 'object') {
+                        el.__x_tippy.setProps(content)
+                        enableTooltip()
+                    } else {
+                        setupTooltip(content)
+                    }
                 })
             })
         }

@@ -3435,11 +3435,13 @@ function src_default(Alpine) {
     if (!el.__x_tippy) {
       el.__x_tippy = (0, import_tippy2.default)(el, config);
     }
+    const enableTooltip = () => el.__x_tippy.enable();
+    const disableTooltip = () => el.__x_tippy.disable();
     const setupTooltip = (content) => {
       if (!content) {
-        el.__x_tippy.disable();
+        disableTooltip();
       } else {
-        el.__x_tippy.enable();
+        enableTooltip();
         el.__x_tippy.setContent(content);
       }
     };
@@ -3449,7 +3451,12 @@ function src_default(Alpine) {
       const getContent = evaluateLater(expression);
       effect(() => {
         getContent((content) => {
-          setupTooltip(content);
+          if (typeof content === "object") {
+            el.__x_tippy.setProps(content);
+            enableTooltip();
+          } else {
+            setupTooltip(content);
+          }
         });
       });
     }
