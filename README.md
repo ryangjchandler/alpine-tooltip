@@ -129,6 +129,34 @@ The magic variable will automatically set the `content` property to the value of
 <button @click="$tooltip('Hello, world!', { delay: 500 })">
 ```
 
+### Using another element for content
+
+This package allows you to provide a raw configuration object for Tippy. This means you can use an HTML element to render the tooltip's content:
+
+```html
+<div x-data="{ message: 'Hello, world!' }">
+    <template x-ref="template">
+        <p x-text="message"></p>
+    </template>
+
+    <button x-tooltip="{
+        content: () => $refs.template.innerHTML,
+        allowHTML: true,
+        appendTo: $root
+    }">
+        Show message!
+    </button>
+</div>
+```
+
+There's a couple of things going on here:
+
+1. We provide a callback to the `content` property which will be invoked before Tippy renders the tooltip. This allows us to use dynamic HTML content as the content inside of the tooltip. 
+2. We tell Tippy to `allowHTML`. By default, the HTML will be rendered as plain text.
+3. Tippy will append the actual tooltip element to the `document.body` by default. Since our `<template>` contains Alpine directives, placing those outside of our actual Alpine component will result in errors. To fix this, Tippy will instead append the element to the `$root` element which is the element where our Alpine component starts (a `<div>` in this case). This allows us to use Alpine directives inside of our template for data binding, etc.
+
+> **Note** If you wish to use buttons or other interactive elements inside of your content, you should add `interactive: true` to the object.
+
 ## Versioning
 
 This projects follow the [Semantic Versioning](https://semver.org/) guidelines.
