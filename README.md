@@ -68,7 +68,7 @@ To create a tooltip, use the `x-tooltip` directive on an element.
 If you don't want to bind your tooltip's content to a data property in your Alpine component, you can add the `.raw` modifier to the directive and set the content using the directive expression instead.
 
 ```html
-<button x-tooltip.raw="Hello, world!">
+<button x-data x-tooltip.raw="Hello, world!">
     Raw Tooltip
 </button>
 ```
