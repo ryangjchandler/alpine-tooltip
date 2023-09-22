@@ -3415,7 +3415,7 @@ var buildConfigFromModifiers = (modifiers) => {
 };
 
 // src/index.js
-function src_default(Alpine) {
+function Tooltip(Alpine) {
   Alpine.magic("tooltip", (el) => {
     return (content, config = {}) => {
       const instance = (0, import_tippy2.default)(el, {
@@ -3462,6 +3462,11 @@ function src_default(Alpine) {
     }
   });
 }
+Tooltip.defaultProps = (props) => {
+  import_tippy2.default.setDefaultProps(props);
+  return Tooltip;
+};
+var src_default = Tooltip;
 
 // builds/module.js
 var module_default = src_default;

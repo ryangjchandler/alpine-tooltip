@@ -2943,7 +2943,7 @@
   };
 
   // src/index.js
-  function src_default(Alpine) {
+  function Tooltip(Alpine) {
     Alpine.magic("tooltip", (el) => {
       return (content, config = {}) => {
         const instance = tippy_esm_default(el, {
@@ -2990,6 +2990,11 @@
       }
     });
   }
+  Tooltip.defaultProps = (props) => {
+    tippy_esm_default.setDefaultProps(props);
+    return Tooltip;
+  };
+  var src_default = Tooltip;
 
   // builds/cdn.js
   document.addEventListener("alpine:initializing", () => {
