@@ -9,7 +9,12 @@
             import Tooltip from '/dist/module.esm.js'
 
             document.addEventListener('alpine:initializing', () => {
-                Tooltip(window.Alpine)
+                window.Alpine.plugin(
+                    Tooltip
+                        .defaultProps({
+                            theme: 'material'
+                        })
+                )
             })
         </script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine-next/packages/alpinejs/dist/cdn.min.js" defer></script>

@@ -157,6 +157,24 @@ There's a couple of things going on here:
 
 > **Note** If you wish to use buttons or other interactive elements inside of your content, you should add `interactive: true` to the object.
 
+## Setting default Tippy properties
+
+Instead of using the same modifiers or configuration objects across all uses of `$tooltip` and `x-tooltip`, you can instead define a set of default properties that you'd like Tippy to use.
+
+This can be done when importing and registering the plugin.
+
+```js
+import Tooltip from '@ryangjchandler/alpine-tooltip'
+
+Alpine.plugin(
+    Tooltip.defaultProps({
+        delay: 50,
+        theme: 'dark',
+        // ...
+    })
+)
+```
+
 ## Versioning
 
 This projects follow the [Semantic Versioning](https://semver.org/) guidelines.
