@@ -4,6 +4,10 @@ import { buildConfigFromModifiers } from "./buildConfigFromModifiers";
 function Tooltip(Alpine) {
     Alpine.magic("tooltip", (el) => {
         return (content, config = {}) => {
+            const timeout = config.timeout;
+
+            delete config.timeout;
+            
             const instance = tippy(el, {
                 content,
                 trigger: "manual",
@@ -16,7 +20,7 @@ function Tooltip(Alpine) {
                 instance.hide();
 
                 setTimeout(() => instance.destroy(), config.duration || 300);
-            }, config.timeout || 2000);
+            }, timeout || 2000);
         };
     });
 
