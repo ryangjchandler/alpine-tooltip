@@ -2946,6 +2946,8 @@
   function Tooltip(Alpine) {
     Alpine.magic("tooltip", (el) => {
       return (content, config = {}) => {
+        const timeout = config.timeout;
+        delete config.timeout;
         const instance = tippy_esm_default(el, {
           content,
           trigger: "manual",
@@ -2955,7 +2957,7 @@
         setTimeout(() => {
           instance.hide();
           setTimeout(() => instance.destroy(), config.duration || 300);
-        }, config.timeout || 2e3);
+        }, timeout || 2e3);
       };
     });
     Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect: effect5}) => {
