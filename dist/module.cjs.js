@@ -3418,6 +3418,8 @@ var buildConfigFromModifiers = (modifiers) => {
 function Tooltip(Alpine) {
   Alpine.magic("tooltip", (el) => {
     return (content, config = {}) => {
+      const timeout = config.timeout;
+      delete config.timeout;
       const instance = (0, import_tippy2.default)(el, {
         content,
         trigger: "manual",
@@ -3427,7 +3429,7 @@ function Tooltip(Alpine) {
       setTimeout(() => {
         instance.hide();
         setTimeout(() => instance.destroy(), config.duration || 300);
-      }, config.timeout || 2e3);
+      }, timeout || 2e3);
     };
   });
   Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect}) => {
