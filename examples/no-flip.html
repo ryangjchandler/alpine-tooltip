@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine.js Toolkit - x-html</title>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.1/dist/tippy.css">
+    <script type="module">
+        import Tooltip from '/dist/module.esm.js'
+
+        document.addEventListener('alpine:initializing', () => {
+            window.Alpine.plugin(
+                Tooltip
+                    .defaultProps({
+                        theme: 'material'
+                    })
+            )
+        })
+    </script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+
+<body x-data="{ content: 'Hello!' }">
+    <button x-tooltip.on.click.placement.left.no-flip="content">
+        Click me!
+    </button>
+
+    <input type="text" x-model="content">
+
+    <button x-tooltip.raw="Hello, world!">
+        Raw tooltip
+    </button>
+</body>
+</html>

@@ -2939,6 +2939,12 @@
     if (modifiers.includes("placement")) {
       config.placement = getModifierArgument("placement");
     }
+    const popperOptions = {};
+    if (modifiers.includes("no-flip")) {
+      popperOptions.modifiers ||= [];
+      popperOptions.modifiers.push({name: "flip", enabled: false});
+    }
+    config.popperOptions = popperOptions;
     return config;
   };
 
