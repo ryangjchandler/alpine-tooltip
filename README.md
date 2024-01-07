@@ -98,6 +98,7 @@ The `x-tooltip` directive is powered by [Tippy.js](https://atomiks.github.io/tip
 | `theme`       | Change the theme of the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/themes/).                                                                                                                                | `x-tooltip.theme.light`                                                   |
 | `placement`   | Change the placement / position of the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/all-props/#placement).                                                                                                    | `x-tooltip.placement.top`, `x-tooltip.placement.bottom-start`             |
 | `animation`   | Change the animation used for the tooltip. Find out more [here](https://atomiks.github.io/tippyjs/v6/animations/).                                                                                                                  | `x-tooltip.animation.scale`, `x-tooltip.animation.perspective`            |
+| `no-flip`     | Disable Popper's default auto-flip behaviour. This allows you to set a placement with `.placement` and always enforce it.                                                                                                           | `x-tooltip.placement.left.no-flip`                                        |
 
 ### `$tooltip`
 
