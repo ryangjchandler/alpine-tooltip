@@ -33,6 +33,7 @@ function Tooltip(Alpine) {
             if (!el.__x_tippy) {
                 el.__x_tippy = tippy(el, config);
             }
+
             cleanup(() => {
                 if (el.__x_tippy) {
                     el.__x_tippy.destroy();
@@ -74,9 +75,9 @@ function Tooltip(Alpine) {
 }
 
 Tooltip.defaultProps = (props) => {
-    tippy.setDefaultProps(props)
+    tippy.setDefaultProps(props);
 
-    return Tooltip
-}
+    return Tooltip;
+};
 
 export default Tooltip;
