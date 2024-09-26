@@ -3428,11 +3428,17 @@ function Tooltip(Alpine) {
       }, timeout || 2e3);
     };
   });
-  Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect}) => {
+  Alpine.directive("tooltip", (el, {modifiers, expression}, {evaluateLater, effect, cleanup}) => {
     const config = modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
     if (!el.__x_tippy) {
       el.__x_tippy = (0, import_tippy2.default)(el, config);
     }
+    cleanup(() => {
+      if (el.__x_tippy) {
+        el.__x_tippy.destroy();
+        delete el.__x_tippy;
+      }
+    });
     const enableTooltip = () => el.__x_tippy.enable();
     const disableTooltip = () => el.__x_tippy.disable();
     const setupTooltip = (content) => {

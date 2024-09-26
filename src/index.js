@@ -7,7 +7,7 @@ function Tooltip(Alpine) {
             const timeout = config.timeout;
 
             delete config.timeout;
-            
+
             const instance = tippy(el, {
                 content,
                 trigger: "manual",
@@ -26,13 +26,20 @@ function Tooltip(Alpine) {
 
     Alpine.directive(
         "tooltip",
-        (el, { modifiers, expression }, { evaluateLater, effect }) => {
+        (el, { modifiers, expression }, { evaluateLater, effect, cleanup }) => {
             const config =
                 modifiers.length > 0 ? buildConfigFromModifiers(modifiers) : {};
 
             if (!el.__x_tippy) {
                 el.__x_tippy = tippy(el, config);
             }
+
+            cleanup(() => {
+                if (el.__x_tippy) {
+                    el.__x_tippy.destroy();
+                    delete el.__x_tippy;
+                }
+            });
 
             const enableTooltip = () => el.__x_tippy.enable();
             const disableTooltip = () => el.__x_tippy.disable();
@@ -68,9 +75,9 @@ function Tooltip(Alpine) {
 }
 
 Tooltip.defaultProps = (props) => {
-    tippy.setDefaultProps(props)
+    tippy.setDefaultProps(props);
 
-    return Tooltip
-}
+    return Tooltip;
+};
 
 export default Tooltip;
